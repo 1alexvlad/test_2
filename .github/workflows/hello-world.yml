@@ -1,4 +1,4 @@
-name: First Practice Workflow.
+name: First Practice Workflow
 on:
   push:
     branches:
