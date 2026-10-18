@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch
+  workflow_dispatch: 
 
 jobs:
   welcome-job:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Приветсвие с именем автора 
       run: | 
-        echo "Привет, это ${{ githab.actor }} запустил сборку"
+        echo "Привет, это ${{ github.actor }} запустил сборку"
 
       - name: Текущая дата и время 
       run: date  
