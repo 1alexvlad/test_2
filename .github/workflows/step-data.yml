@@ -18,7 +18,8 @@ jobs:
           echo "RANDOM_NUM=$random_value" >> "$GITHUB_ENV"
 
       - name: Использование данных
-        run: echo "Сгенерированное число: $RANDOM_NUM"
+        run: echo "Сгенерированное число $RANDOM_NUM"
 
       - name: Финал
-        run: 'echo "Сборка версии $APP_VERSION успешно завершена пользователем: ${{ github.actor }}"'
+        run: |
+          echo "Сборка версии $APP_VERSION успешно завершена пользователем: ${{ github.actor }}"
