@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Генерация данных
-      run: random_value=$RANDOM echo "RANDOM_NUM=$random_value" >> \$GITHUB_ENV
+        run: random_value=$RANDOM echo "RANDOM_NUM=$random_value" >> \$GITHUB_ENV
 
       - name: Использование данных
-      run: echo Сгенерированное число: \$RANDOM_NUM
+        run: echo Сгенерированное число: \$RANDOM_NUM
 
       - name: Финал
-      run: echo Сборка версии \$RANDOM_NUM успешно завершена пользователем ${{ github.actor }}
+        run: echo Сборка версии \$RANDOM_NUM успешно завершена пользователем ${{ github.actor }}
