@@ -1,0 +1,19 @@
+name: First Practice Workflow.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch
+
+jobs:
+  welcome-job:
+    name: welcome-job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Приветсвие с именем автора 
+      run: | 
+        echo "Привет, это ${{ githab.actor }} запустил сборку"
+
+      - name: Текущая дата и время 
+      run: date  
