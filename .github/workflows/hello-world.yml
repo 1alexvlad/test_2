@@ -1,9 +1,10 @@
 name: First Practice Workflow
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   welcome-job:
@@ -11,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Приветсвие с именем автора 
-      run: | 
-        echo "Привет, это ${{ github.actor }} запустил сборку"
-
-      - name: Текущая дата и время 
-      run: date  
+      - name: Приветствие с именем автора
+        run: |
+          echo "Привет, это \${{ github.actor }} запустил сборку!"
+      - name: Текущая дата и время
+        run: date
