@@ -1,10 +1,11 @@
-name: First Practice Workflow
+name: Step Data Practice
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+
+env:
+  APP_VERSION: "1.0.0"
+
 
 jobs:
   welcome-job:
@@ -12,8 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Приветствие с именем автора
-        run: |
-          echo "Привет, это \${{ github.actor }} запустил сборку!"
-      - name: Текущая дата и время
-        run: date
+      - name: Генерация данных
+      run: random_value=$RANDOM echo "RANDOM_NUM=$random_value" >> \$GITHUB_ENV
+
+      - name: Использование данных
+      run: echo Сгенерированное число: \$RANDOM_NUM
+
+      - name: Финал
+      run: echo Сборка версии \$RANDOM_NUM успешно завершена пользователем ${{ github.actor }}
