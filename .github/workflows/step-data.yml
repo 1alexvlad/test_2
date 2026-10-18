@@ -21,4 +21,4 @@ jobs:
         run: echo "Сгенерированное число: $RANDOM_NUM"
 
       - name: Финал
-        run: 'echo "Сборка версии $APP_VERSION успешно завершена пользователем ${{ github.actor }}"'
+        run: 'echo "Сборка версии $APP_VERSION успешно завершена пользователем: ${{ github.actor }}"'
