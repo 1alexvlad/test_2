@@ -23,4 +23,5 @@ jobs:
             echo "IS_MAIN=false" >> "$GITHUB_ENV"
           fi
       - name: Проверка результата
-        run: echo "Флаг основной ветки равен: $IS_MAIN"
+        run: |
+          echo "Флаг основной ветки равен: $IS_MAIN"
