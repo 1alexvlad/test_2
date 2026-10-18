@@ -1,0 +1,26 @@
+name: Step Data Practice
+
+on:
+  push:
+    branches: []
+  workflow_dispatch:
+
+jobs:
+  inspect-system:
+    name: inspect-system
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Версия ядра Linux
+        run: uname -a
+      - name: Логика ветки
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then 
+            echo "IS_MAIN=true" >> "$GITHUB_ENV"
+          else
+            echo "IS_MAIN=false" >> "$GITHUB_ENV"
+          fi
+      - name: Проверка результата
+        run: echo "Флаг основной ветки равен: $IS_MAIN"
