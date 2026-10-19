@@ -1,27 +1,55 @@
 name: Step Data Practice
 
-on:
+on: 
   push:
-    branches: []
-  workflow_dispatch:
+    branches:
+      - main
+  pull request:
+    branches:
+      - main
 
 jobs:
-  inspect-system:
-    name: inspect-system
-    runs-on: ubuntu-latest
+  ci-job:
+    name: ci-job
+    runs-on: ubuntu-latest 
 
     steps:
-      - name: Версия ядра Linux
-        run: uname -a
-      - name: Логика ветки
-        env:
-          GITHUB_REF: ${{ github.ref }}
-        run: |
-          if [ "$GITHUB_REF" = "refs/heads/main" ]; then 
-            echo "IS_MAIN=true" >> "$GITHUB_ENV"
-          else
-            echo "IS_MAIN=false" >> "$GITHUB_ENV"
-          fi
-      - name: Проверка результата
-        run: |
-          echo "Флаг основной ветки равен: $IS_MAIN"
+      - name: Checkout code 
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' 
+      
+      - name: Install dependecies
+        run: pip install flake8 pytest 
+      
+      - name: Run flake8 linter 
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Run pytest
+        run: pytest
+
+      
+
+# jobs:
+#   inspect-system:
+#     name: inspect-system
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Версия ядра Linux
+#         run: uname -a
+#       - name: Логика ветки
+#         env:
+#           GITHUB_REF: ${{ github.ref }}
+#         run: |
+#           if [ "$GITHUB_REF" = "refs/heads/main" ]; then 
+#             echo "IS_MAIN=true" >> "$GITHUB_ENV"
+#           else
+#             echo "IS_MAIN=false" >> "$GITHUB_ENV"
+#           fi
+#       - name: Проверка результата
+#         run: |
+#           echo "Флаг основной ветки равен: $IS_MAIN"
